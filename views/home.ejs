@@ -3,13 +3,38 @@
   <head>
     <meta charset="utf-8">
     <title>Express App</title>
+      <script src='https://www.gstatic.com/firebasejs/4.9.0/firebase.js'></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: 'AIzaSyAK3eBaXs7vbG8H_-jW-NqEYVuBBviZOxA',
+          authDomain: 'first-2a4e8.firebaseapp.com',
+          databaseURL: 'https://first-2a4e8.firebaseio.com',
+          projectId: 'first-2a4e8',
+          storageBucket: 'first-2a4e8.appspot.com',
+          messagingSenderId: '352918754504'
+        };
+        firebase.initializeApp(config)
+      </script>
   </head>
   <body>
-    <h1>Hello</h1>
-    <p>How are you?</p>
-    <form method="post">
-      <p>Enter your breakfast: <input name="breakfast" /></p>
-      <button type="submit">Submit</button>
-    </form>
+    <h1>Voting</h1>
+    <p>Login with FireBase</p>
+    <h3 id="google-displayName"></h3>
+    <img id="google-pic" src=""/>
+    <p id="google-email"></p>
+    <button type="submit" onclick={signInWithGoogle()}>Login</button>
+    <script type="text/javascript">
+      function signInWithGoogle() {
+        var googleAuthProvider = new firebase.auth.GoogleAuthProvider
+        firebase.auth().signInWithPopup(googleAuthProvider)
+          .then(function(data) {
+            console.log(data)
+          })
+          .catch(function(error) {
+            console.log(error)
+          })
+      }
+    </script>
   </body>
 </html>
