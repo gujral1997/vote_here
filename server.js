@@ -5,8 +5,6 @@ var app = express()
 
 app.use(morgan('dev'))
 
-
-
 // We want to serve js and html in ejs
 // ejs stands for embeded javascript
 app.set('view engine', 'ejs')
@@ -28,7 +26,8 @@ app.get('/', function(request, response) {
 
 app.post('/', function(request, response) {
   // Send back a page with yelled breakfast
-  console.log(request.body.breakfast)
+  var breakfast= request.body.breakfast
+  response.render('results.ejs', {data: breakfast})
 })
 
 var port = process.env.PORT || 8080
