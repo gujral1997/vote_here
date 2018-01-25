@@ -1,8 +1,24 @@
 var express = require('express')
 var morgan = require('morgan')
+var bodyParser = require('body-parser')
 var app = express()
 
 app.use(morgan('dev'))
+
+
+
+// We want to serve js and html in ejs
+// ejs stands for embeded javascript
+app.set('view engine', 'ejs')
+
+// We also want to send css and images (static files.)
+
+app.use(express.static('views'))
+app.set('views', __dirname + '/views') // __dirname means directory we are currenty in, use that directory
+
+// Give server excess to the user
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}))
 
 // Create instance of express app
 app.get('/', function(request, response) {
@@ -10,14 +26,10 @@ app.get('/', function(request, response) {
   response.render('home.ejs')
 })
 
-//We want to serve js and html in ejs
-//ejs stands for embeded javascript
-app.set('view engine', 'ejs')
-
-//We also want to send css and images (static files.)
-
-app.use(express.static('views'))
-app.set('views', __dirname + '/views') // __dirname means directory we are currenty in, use that directory
+app.post('/', function(request, response) {
+  // Send back a page with yelled breakfast
+  console.log(request.body.breakfast)
+})
 
 var port = process.env.PORT || 8080
 
