@@ -23,7 +23,19 @@
     <h3 id="google-displayName"></h3>
     <img id="google-pic">
     <p id="google-email"></p>
-    <button type="submit" onclick={signInWithGoogle()}>Login</button>
+    <button
+    onclick={signInWithGoogle()}
+    class = "btn btn-primary"
+    id = "google-signin"
+    >Login
+    </button>
+    <button
+    class = "btn btn-"
+    id = "signout"
+    onclick = {signOut()}
+    style = "display: none; visibility: hidden;"
+    >
+    </button>
     <script src="js/firebaseAuth.js">
 
     </script>

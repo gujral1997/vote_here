@@ -20,13 +20,17 @@ function signInWithGoogle() {
 }
 function checkIfLoggedIn() {
   if (localStorage.getItem('firebase_idToken')) {
-    document.getElementById('gone')
-      .setAttribute('style', 'display: none; visibility: hidden')
     document.getElementById('google-pic')
-    .setAttribute('src', localStorage.getItem('google_photo'))
+      .setAttribute('src', localStorage.getItem('google_photo'))
+    document.getElementById('google-signin')
+    .setAttribute('style', 'display: inline-block; visibility: hidden')
+    document.getElementById('signout')
+      .setAttribute('style', 'display: none; visibility: visible')
   } else {
-    document.getElementById('gone')
+    document.getElementById('google-signin')
       .setAttribute('style', 'display: inline-block; visibility: visible')
+    document.getElementById('signout')
+      .setAttribute('style', 'display: none; visibility: hidden')
   }
 }
 checkIfLoggedIn()
