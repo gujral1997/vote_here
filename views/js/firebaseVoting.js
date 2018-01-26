@@ -6,4 +6,10 @@ function addRestraunt() {
   restrauntInput.value = ''
   // return restrauntRef.push().key
   return restrauntRef.push(restrauntName)
+    .then(function() {
+      window.location.reload()
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
 }
