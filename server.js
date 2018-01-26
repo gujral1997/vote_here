@@ -11,6 +11,8 @@ var firebaseAdmin = admin.initializeApp({
   databaseURL: 'https://first-2a4e8.firebaseio.com'
 })
 
+var database = firebaseAdmin.database() // Instance of a database
+
 var app = express()
 
 app.use(morgan('dev'))
@@ -35,23 +37,23 @@ function isAuthenticated(request, response, next) {
   // if they are not send them to login page
   // if they are, attatch them to login page
   // with a message login
-
+  next()
 }
 
 // Create instance of express app
 app.get('/', function(request, response) {
   // ...response.send('<h1>Hello</h1>')
-  response.render('home.ejs')
+  var restrauntRef = database.ref("/restraunts")
+
+  restrauntRef.once('value', function(snapshot) {
+    console.log(snapshot.val())
+    response.render('home.ejs', {restraunts:snapshot.val()})
+  })
 })
 
-app.get('/homecomingQueen', isAuthenticated, function(request ,response) {
-  response.render('homecomingQueen.ejs')
-})
-
-app.post('/', function(request, response) {
+app.post('/login', function(request, response) {
   // Send back a page with yelled breakfast
-  var breakfast= request.body.breakfast
-  response.render('results.ejs', {data: breakfast})
+  response.render('results.ejs')
 })
 
 var port = process.env.PORT || 8080

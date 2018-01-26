@@ -16,7 +16,13 @@
       onclick={addRestraunt()}
       >
       Add
-      </button>
+    </button>
+    <div>
+      <%var keys = Object.keys(restraunts)%>
+      <%keys.forEach(function(key) {%>
+        <p><%=  restraunts[key]%></p>
+      <%})%>
+    </div>
       <h3 id="google-displayName"></h3>
       <img id="google-pic" alt="">
       <p id="google-email"></p>
