@@ -1,7 +1,8 @@
-function addRestraunt(restrauntName) {
+function addRestraunt() {
   var database = firebase.database()
-  var restrauntRef = database.ref('/')
-
+  var restrauntRef = database.ref('/restraunts')
+  var restrauntInput = document.getElementById('addRestraunt')
+  var restrauntName = restrauntInput.value
   // return restrauntRef.push().key
-  return restrauntRef.push('Burger King')
+  return restrauntRef.push(restrauntName)
 }

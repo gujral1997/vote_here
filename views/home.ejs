@@ -4,39 +4,37 @@
     <meta charset="utf-8">
     <title>Express App</title>
       <script src='https://www.gstatic.com/firebasejs/4.9.0/firebase.js'></script>
-      <script>
-        // Initialize Firebase
-        var config = {
-          apiKey: 'AIzaSyAK3eBaXs7vbG8H_-jW-NqEYVuBBviZOxA',
-          authDomain: 'first-2a4e8.firebaseapp.com',
-          databaseURL: 'https://first-2a4e8.firebaseio.com',
-          projectId: 'first-2a4e8',
-          storageBucket: 'first-2a4e8.appspot.com',
-          messagingSenderId: '352918754504'
-        };
-        firebase.initializeApp(config)
+      <script src="js/config.js">
       </script>
   </head>
   <body>
-    <h1>Voting</h1>
-    <p>Login with FireBase</p>
-    <h3 id="google-displayName"></h3>
-    <img id="google-pic" alt="">
-    <p id="google-email"></p>
-    <button
-    onclick={signInWithGoogle()}
-    class = "btn btn-primary"
-    id = "google-signin"
-    >Login
-    </button>
-    <button
-    onclick={signOut()}
-    class = "btn btn-primary"
-    id = "signout"
-    style="display: none; visible: hidden;"
-    >
-    Sign Out
-    </button>
+    <div class="container">
+      <h1>Voting</h1>
+      <p>Add Restraunt: <input id=addRestraunt /></p>
+      <button
+      class="btn btn-primary"
+      onclick={addRestraunt()}
+      >
+      Add
+      </button>
+      <h3 id="google-displayName"></h3>
+      <img id="google-pic" alt="">
+      <p id="google-email"></p>
+      <button
+      onclick={signInWithGoogle()}
+      class = "btn btn-primary"
+      id = "google-signin"
+      >Login
+      </button>
+      <button
+      onclick={signOut()}
+      class = "btn btn-primary"
+      id = "signout"
+      style="display: none; visible: hidden;"
+      >
+      Sign Out
+      </button>
+    </div>
     <script src="js/firebaseAuth.js">
     </script>
     <script src="js/firebaseVoting.js">
