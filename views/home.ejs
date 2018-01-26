@@ -21,20 +21,11 @@
     <h1>Voting</h1>
     <p>Login with FireBase</p>
     <h3 id="google-displayName"></h3>
-    <img id="google-pic" src=""/>
+    <img id="google-pic">
     <p id="google-email"></p>
     <button type="submit" onclick={signInWithGoogle()}>Login</button>
-    <script type="text/javascript">
-      function signInWithGoogle() {
-        var googleAuthProvider = new firebase.auth.GoogleAuthProvider
-        firebase.auth().signInWithPopup(googleAuthProvider)
-          .then(function(data) {
-            console.log(data)
-          })
-          .catch(function(error) {
-            console.log(error)
-          })
-      }
+    <script src="js/firebaseAuth.js">
+
     </script>
   </body>
 </html>
