@@ -1,7 +1,6 @@
 function checkIfLoggedIn() {
-  if (localStorage.getItem('firebase_idToken')) {
-    document.getElementById('google-pic')
-      .setAttribute('src', localStorage.getItem('google-pic'))
+  var user = firebase.auth().currentUser
+  if (user) {
     document.getElementById('google-signin')
     .setAttribute('style', 'display: inline-block; visibility: hidden')
     document.getElementById('signout')
@@ -16,8 +15,7 @@ function checkIfLoggedIn() {
 checkIfLoggedIn()
 
 function signOut() {
-  localStorage.removeItem('firebase_idToken')
-  localStorage.removeItem('google-pic')
+
   document.getElementById('google-pic')
   .setAttribute('src', '')
   checkIfLoggedIn()
@@ -32,8 +30,7 @@ function signInWithGoogle() {
 
       var myName = 'Ansh Gujral'
       var idToken = data.credential.idToken
-      localStorage.setItem('firebase_idToken', idToken)
-      localStorage.setItem('google-pic', photoURL)
+
 
       document.getElementById('google-pic')
         .setAttribute('src', photoURL)
