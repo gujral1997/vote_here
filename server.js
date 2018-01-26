@@ -46,8 +46,11 @@ app.get('/', function(request, response) {
   var restrauntRef = database.ref("/restraunts")
 
   restrauntRef.once('value', function(snapshot) {
-    console.log(snapshot.val())
-    response.render('home.ejs', {restraunts:snapshot.val()})
+    var data = snapshot.val()
+    if (!data) {
+      data = {}
+    }
+    response.render('home.ejs', {restraunts: data})
   })
 })
 
