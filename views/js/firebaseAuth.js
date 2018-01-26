@@ -18,9 +18,6 @@ checkIfLoggedIn()
 function signOut() {
   localStorage.removeItem('firebase_idToken')
   localStorage.removeItem('google-pic')
-
-  document.getElementById('google-pic')
-  .setAttribute('style', 'visibility: hidden')
   document.getElementById('google-pic')
   .setAttribute('src', '')
   checkIfLoggedIn()
