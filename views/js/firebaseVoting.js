@@ -45,5 +45,13 @@ function downVote(key) {
   var restrauntVotesRef = database.ref('/restraunts')
                                   .child(key)
                                   .child('/votes')
-  restrauntVotesRef.remove(userId)
+                                  .child(userId)
+                                  .remove()
+                                  .then(function () {
+                                    window.location.reload()
+                                  })
+                                  .catch(function (err) {
+                                    console.log(err)
+                                  })
+  // restrauntVotesRef.remove(userId)
 }

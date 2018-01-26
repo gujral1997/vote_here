@@ -29,7 +29,12 @@
     <div class="row">
       <%var keys = Object.keys(restraunts)%>
       <%keys.forEach(function(key) {%>
-        <%var allUsers = Object.keys(restraunts[key].votes)%>
+      <% var allUsers %>
+      <% if(restraunts[key].votes) {%>
+        <% allUsers = Object.keys(restraunts[key].votes) %>
+      <%} else {%>
+        <% allUsers = [] %>
+        <% } %>
         <div class="col s6 m6">
             <div class="card blue-grey darken-1">
               <div class="card-content white-text">
